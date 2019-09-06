@@ -4,7 +4,7 @@ import "./App.css";
 //Importing my own custom made Components
 import SayHello from "./components/sayHello";
 import Tweet from "./components/Tweet";
-import NewTaskForm from "./components/NewTaskForm"
+import NewTweet from "./components/NewTweet"
 import ClassComponent from "./components/ClassComponent"
 
 const App: React.FC = () => {
@@ -22,7 +22,8 @@ const App: React.FC = () => {
       */}
       <SayHello/>
       {/* We can define and add our own attributes to our components!*/}
-      <Tweet name = "Isak" message = "I am learning React"/>
+      <Tweet name = "Isak" msg = "I am learning React"/>
+      <NewTweet/>
       <ClassComponent/>
     </div>
   );

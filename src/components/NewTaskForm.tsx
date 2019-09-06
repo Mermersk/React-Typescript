@@ -14,7 +14,7 @@ const NewTaskForm: React.FC<Props> = ({
     task
 
 }) => (
-    <form onSubmit = {onAdd}>
+    <form onSubmit = {onAdd} className = "newTaskForm">
         <input onChange = {onChange} value = {task.name}/>
         <button type = "submit">Add a task</button>
     </form>

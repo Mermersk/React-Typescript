@@ -3,7 +3,14 @@ import React from "react";
 /*In order to be able to pass in our own attributes we must define their
 name and type inside of <{}> after React.FC. This then is an object called props!
 then in our main file we do <Tweet name = "Isak"/> to pass in the value. */
-const Tweet: React.FC<{name: string, message: string}> = (props) => {
+
+interface ITweet {
+    name: string,
+    msg: string
+}
+
+
+const Tweet: React.FC<ITweet> = ({name, msg}) => {
     /*
     Creating a special variable-function from React. numberOfLikes is an variable
     and increment is the function that follows it. The special thing here is that this
@@ -17,17 +24,19 @@ const Tweet: React.FC<{name: string, message: string}> = (props) => {
     const tweetWasClicked = () => {
         increment(numberOfLikes + 1);
     }
+
+    //Defining style-object. This will then be used inLin as the style for this component.
+    //However some CSS features are not available using inline, I will style using App.css.
+    
     /*Here we use className instead of class, since this is JSX-TSX but not html really. So we cant use class */
     return (
-        
         <div className = "tweet" onClick = {tweetWasClicked}>
-            <h3>{props.name}</h3>
-            {console.log(typeof(props))}
-            <p>{props.message}</p>
+            <h3>{name}</h3>
+            <p>{msg}</p>
             <p>Number of likes: {numberOfLikes}</p>
         </div>
     )
 
-}
+};
 
 export default Tweet;
