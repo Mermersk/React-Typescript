@@ -1,6 +1,4 @@
 import React from "react";
-import Tweet from "./Tweet";
-import useNewTweet from "./CustomHooks";
 import TweetList from "./TweetList";
 
 

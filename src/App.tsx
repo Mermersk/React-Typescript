@@ -3,10 +3,8 @@ import React from 'react';
 import "./App.css";
 //Importing my own custom made Components
 import SayHello from "./components/sayHello";
-import Tweet from "./components/Tweet";
 import NewTweet from "./components/NewTweet"
 import ClassComponent from "./components/ClassComponent"
-import TweetList from './components/TweetList';
 
 const App: React.FC = () => {
 
@@ -25,7 +23,6 @@ const App: React.FC = () => {
       {/* We can define and add our own attributes to our components!*/}
       
       <NewTweet/>
-      
       <ClassComponent/>
     </div>
   );
