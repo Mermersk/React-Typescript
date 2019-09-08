@@ -6,13 +6,14 @@ import SayHello from "./components/sayHello";
 import Tweet from "./components/Tweet";
 import NewTweet from "./components/NewTweet"
 import ClassComponent from "./components/ClassComponent"
+import TweetList from './components/TweetList';
 
 const App: React.FC = () => {
 
   //Can either just return the h1 directly or wrap it in an variable and then
   //put it into our TSX-html with curly braces and variable name.
   const ss: any = <h1>I am an h1 inside of App component</h1>;
-
+  
   return(
     <div>
       {ss}
@@ -22,8 +23,9 @@ const App: React.FC = () => {
       */}
       <SayHello/>
       {/* We can define and add our own attributes to our components!*/}
-      <Tweet name = "Isak" msg = "I am learning React"/>
+      
       <NewTweet/>
+      
       <ClassComponent/>
     </div>
   );

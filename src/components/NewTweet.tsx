@@ -1,6 +1,7 @@
 import React from "react";
 import Tweet from "./Tweet";
-import useNewTweet from "./CustomHooks"
+import useNewTweet from "./CustomHooks";
+import TweetList from "./TweetList";
 
 
 /*
@@ -20,8 +21,7 @@ interface IProps {
 }
 
 class NewTweet extends React.Component<IProps, IState> {
-
-
+    nw: any;
     constructor(props: any) {
         super(props);
 
@@ -30,40 +30,46 @@ class NewTweet extends React.Component<IProps, IState> {
         this.handleChangeAuthor = this.handleChangeAuthor.bind(this);
         this.handleChangeTextContent = this.handleChangeTextContent.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        
+    };
 
-    }
 
     handleChangeAuthor(event: any) {
         this.setState({author: event.target.value})
-    }
+    };
 
     handleChangeTextContent(event: any) {
         this.setState({textContent: event.target.value})
-    }
+    };
 
     handleSubmit(event: any) {
-        alert("A author name was submitted " + this.state.author + "  TextContent: " + this.state.textContent);
 
-        let nw: any = <Tweet name = {this.state.author} msg = {this.state.textContent}/>
         event.preventDefault();
-    }
+        //These 2 setState were the missing piece!
+        this.setState({textContent: ""})
+        this.setState({author: ""})
+        this.nw = <TweetList name = {this.state.author} textContent = {this.state.textContent}/>
+    };
 
 
     render() {
     return (
-        
+        <div>
         <form className = "tweet" onSubmit = {this.handleSubmit}>
             <label>Author of new Tweet:</label> 
-            <input type="text" value = {this.state.author} onChange = {this.handleChangeAuthor}/> 
+            <input type="text" value = {this.state.author} onChange = {this.handleChangeAuthor} required/> 
             <br/>
             <label>Text of new Tweet: </label>
             <br/>
-            <input type="text" name = {this.state.textContent} onChange = {this.handleChangeTextContent}/>
+            <input type="text" value = {this.state.textContent} onChange = {this.handleChangeTextContent} required/>
             <br/>
             <button type = "submit">Create new Tweet</button>
         </form>
+            {this.nw}
+        </div>
+        
 
-        )
+        );
     };
 };
 
