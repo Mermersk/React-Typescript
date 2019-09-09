@@ -2,7 +2,7 @@ import React from "react";
 /* Tweet component*/
 /*In order to be able to pass in our own attributes we must define their
 name and type inside of <{}> after React.FC. This then is an object called props!
-then in our main file we do <Tweet name = "Isak"/> to pass in the value. */
+then in our main file we do <Tweet name = "Isak"/> to pass in the value. This is props */
 
 interface ITweet {
     author: string,

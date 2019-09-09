@@ -3,10 +3,9 @@ import React from 'react';
 import "./App.css";
 //Importing my own custom made Components
 import SayHello from "./components/sayHello";
-import Tweet from "./components/Tweet";
-import NewTweet from "./components/NewTweet"
-import ClassComponent from "./components/ClassComponent"
-import TweetList from './components/TweetList';
+import NewTweet from "./components/NewTweet";
+import TweetList from "./components/TweetList"
+import ClassComponent from "./components/ClassComponent";
 
 interface IState {
   author: string,
@@ -41,7 +40,7 @@ class App extends React.Component<{}, IState> {
       <NewTweet author = {this.state.author} textContent = {this.state.textContent} handleChangeAuthor = {this.handleChangeAuthor.bind(this)} handleSubmit = {this.handleSubmit.bind(this)} handleChangeTextContent = {this.handleChangeTextContent.bind(this)}/>
       <TweetList author = {this.state.author} msg = {this.state.textContent} isSubmited = {this.state.isSubmited}/>
       <ClassComponent/>
-      
+
     </div>
   );
 }
