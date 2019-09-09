@@ -10,67 +10,36 @@ the State interface in order to be able to access state variables.
 
 Function components take props(interface) while class based take props and state interfaces.
 */
-interface IState {
-
-    author: string,
-    textContent: string
-}
 
 interface IProps {
+    author: string,
+    textContent: string,
+    handleChangeAuthor: (event: any) => void;
+    handleChangeTextContent: (event: any) => void;
+    handleSubmit: (event: any) => void;
+};
 
-}
-
-class NewTweet extends React.Component<IProps, IState> {
-    nw: any;
-    constructor(props: any) {
-        super(props);
-
-        this.state = {author: "", textContent: ""};
-
-        this.handleChangeAuthor = this.handleChangeAuthor.bind(this);
-        this.handleChangeTextContent = this.handleChangeTextContent.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        
-    };
+const NewTweet: React.FC<IProps> = ({
+    author, textContent, handleChangeAuthor, handleChangeTextContent, handleSubmit}) => {
 
 
-    handleChangeAuthor(event: any) {
-        this.setState({author: event.target.value})
-    };
-
-    handleChangeTextContent(event: any) {
-        this.setState({textContent: event.target.value})
-    };
-
-    handleSubmit(event: any) {
-
-        event.preventDefault();
-        //These 2 setState were the missing piece!
-        this.setState({textContent: ""})
-        this.setState({author: ""})
-        this.nw = <TweetList name = {this.state.author} textContent = {this.state.textContent}/>
-    };
-
-
-    render() {
     return (
         <div>
-        <form className = "tweet" onSubmit = {this.handleSubmit}>
+        <form className = "tweet" onSubmit = {handleSubmit}>
             <label>Author of new Tweet:</label> 
-            <input type="text" value = {this.state.author} onChange = {this.handleChangeAuthor} required/> 
+            <input type="text" value = {author} onChange = {handleChangeAuthor} required/> 
             <br/>
             <label>Text of new Tweet: </label>
             <br/>
-            <input type="text" value = {this.state.textContent} onChange = {this.handleChangeTextContent} required/>
+            <input type="text" value = {textContent} onChange = {handleChangeTextContent} required/>
             <br/>
             <button type = "submit">Create new Tweet</button>
         </form>
-            {this.nw}
         </div>
         
 
         );
-    };
+    
 };
 
 export default NewTweet

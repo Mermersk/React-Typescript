@@ -1,25 +1,48 @@
 import React from "react";
 import Tweet from "./Tweet";
 
-interface Props {
-    name: string,
-    textContent: string
+interface Iprops {
+    author: string,
+    msg: string,
+    isSubmited: boolean
 }
 
-let listOfTweets: any[] = [];
 
+let submitedTweets: JSX.Element[] = [];
+
+const TweetList: React.FC<Iprops> = (props) => {
+    
+
+    const createNewTweet = () => {
+        return <Tweet author = {props.author} msg = {props.msg}/>
+    };
+
+    if (props.isSubmited) {
+        submitedTweets.push(createNewTweet())
+    };
+    
+    return (
+        <div>
+            {submitedTweets}
+        </div>
+        ) 
+};
+
+
+/*
 const TweetList: React.FC<Props> = ({name, textContent}) => {
     //Create new Tweet
     let nw = <Tweet name = {name} msg = {textContent}/>
-    listOfTweets.push(nw);
+    //listOfTweets.push(nw);
 
     return (
 
         <div>
-            {listOfTweets}
         </div>
 
     )
 }
+
+*/
 
 export default TweetList;

@@ -8,27 +8,43 @@ import NewTweet from "./components/NewTweet"
 import ClassComponent from "./components/ClassComponent"
 import TweetList from './components/TweetList';
 
-const App: React.FC = () => {
+interface IState {
+  author: string,
+  textContent: string,
+  isSubmited: Boolean
+}
 
-  //Can either just return the h1 directly or wrap it in an variable and then
-  //put it into our TSX-html with curly braces and variable name.
-  const ss: any = <h1>I am an h1 inside of App component</h1>;
+class App extends React.Component<{}, IState> {
+
+  state = {author: "", textContent: "", isSubmited: false};
+
+  private handleChangeAuthor(event: any) {
+    this.setState({author: event.target.value})
+    this.setState({isSubmited: false})
+  }
+
+  private handleChangeTextContent(event: any) {
+    this.setState({textContent: event.target.value})
+    this.setState({isSubmited: false})
+  }
+
+  private handleSubmit(event: any) {
+    event.preventDefault();
+    this.setState({isSubmited: true})
+  }
   
+  render() {
   return(
     <div>
-      {ss}
-      {/*Component is called as its own new HTML-JSX Element
-       It MUST be named with an capitol letter in the beginning. Those are custom component
-       while lowercase is for the regular HTML components.
-      */}
+
       <SayHello/>
-      {/* We can define and add our own attributes to our components!*/}
-      
-      <NewTweet/>
-      
+      <NewTweet author = {this.state.author} textContent = {this.state.textContent} handleChangeAuthor = {this.handleChangeAuthor.bind(this)} handleSubmit = {this.handleSubmit.bind(this)} handleChangeTextContent = {this.handleChangeTextContent.bind(this)}/>
+      <TweetList author = {this.state.author} msg = {this.state.textContent} isSubmited = {this.state.isSubmited}/>
       <ClassComponent/>
+      
     </div>
   );
+}
 }
 
 export default App;
